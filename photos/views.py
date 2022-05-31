@@ -4,8 +4,8 @@ from .models import Photo, Category
 # Create your views here.
 
 def gallery(request):
-    Category = Category.objects.all()
-    context = { 'Category': Category }
+    categories = Category.objects.all()
+    context = { 'categories': categories}
     return render(request, 'photos/gallery.html', context)
 
 
