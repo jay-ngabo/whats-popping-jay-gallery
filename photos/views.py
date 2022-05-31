@@ -4,7 +4,11 @@ from .models import Photo, Category
 # Create your views here.
 
 def gallery(request):
-    return render(request, 'photos/gallery.html')
+    Category = Category.objects.all()
+    context = { 'Category': Category }
+    return render(request, 'photos/gallery.html', context)
+
+
 
 def viewPhoto(request, pk):
     return render(request, 'photos/photo.html')
