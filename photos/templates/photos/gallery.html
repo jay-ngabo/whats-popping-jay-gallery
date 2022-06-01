@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -46,45 +47,24 @@
             <div class="col-md-9">
                 <div class="row">
 
-                    <div class="col-md-4">
-                        <div class="card my-2">
-                            <img class="image-thumbnail" src="https://images.unsplash.com/photo-1583083527882-4bee9aba2eea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8&w=1000&q=80" alt="Card image cap">
-                            <div class="card-body">
-                              <small>Category : Pets</small>
-                            </div>
-                            <a href="{% url 'photo' 5 %}" class="btn btn-outline-dark btn-sm m-1">view</a>
-                        </div>
-                    </div>
+                    {% for photo in photos %}
+                        <div class="col-md-4" >
+                            <div class="card my-2">
 
-                    <div class="col-md-4">
-                        <div class="card my-2">
-                            <img class="image-thumbnail" src="https://images.unsplash.com/photo-1583083527882-4bee9aba2eea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8&w=1000&q=80" alt="Card image cap">
-                            <div class="card-body">
-                              <small>Category : Pets</small>
-                            </div>
-                            <a href="{% url 'photo' 5 %}" class="btn btn-outline-dark btn-sm m-1">view</a>
-                        </div>
-                    </div>
+                                <img src="{{photo.image.url}}" class="image-thumbnail" alt="card image cap">
 
-                    <div class="col-md-4">
-                        <div class="card my-2">
-                            <img class="image-thumbnail" src="https://images.unsplash.com/photo-1583083527882-4bee9aba2eea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8&w=1000&q=80" alt="Card image cap">
-                            <div class="card-body">
-                              <small>Category : Pets</small>
-                            </div>
-                            <a href="{% url 'photo' 5 %}" class="btn btn-outline-dark btn-sm m-1">view</a>
-                        </div>
-                    </div>
+                                <div class="card-body">
+                                <small>{{photo.category.name}}</small>
+                                <small>{{photo.description}}</small>    
+                                </div>
 
-                    <div class="col-md-4">
-                        <div class="card my-2">
-                            <img class="image-thumbnail" src="https://images.unsplash.com/photo-1583083527882-4bee9aba2eea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8&w=1000&q=80" alt="Card image cap">
-                            <div class="card-body">
-                              <small>Category : Pets</small>
+                                <a href="{% url 'photo' photo.id %}" class="btn btn-outline-dark btn-small m-1">View</a>
+
                             </div>
-                            <a href="{% url 'photo' 5 %}" class="btn btn-outline-dark btn-sm m-1">view</a>
+
                         </div>
-                    </div>
+                    {% endfor %}
+  
                 </div>
             </div>
         </div>
