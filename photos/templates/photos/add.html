@@ -15,10 +15,11 @@
             <div class="col-md-4">
                 <a href="{% url 'gallery' %}" class="btn btn-dark my-3">Go Back</a>
                 <div class="card">
-                    <form>
+                    <form method="post" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
                             <div class="form-group m-3">
                              <label>Description</label>
-                             <input name="Description" type="text" placeholder="Enter Description" class="form-control">
+                             <input required name="Description" type="text" placeholder="Enter Description" class="form-control">
                             </div>
                             
                             <div class="form-group m-3">
@@ -42,8 +43,9 @@
                         
                             <div class="form-group m-3">
                               <label>Upload image</label>
-                              <input name="image" type="file" class="form-control-file">
+                              <input required name="image" type="file" class="form-control-file">
                             </div>
+                            <button type="submit" class="btn btn-primary ,-3">Submit</button>
                         
                     </form>
                 </div>
